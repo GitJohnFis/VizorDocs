@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { ChangeEvent } from 'react';
@@ -14,8 +15,21 @@ import { AppHeader } from '@/components/AppHeader';
 import { AppFooter } from '@/components/AppFooter';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { UploadCloud, FileText, Wand2, Download, FileImage, Info } from 'lucide-react';
+import { ImageSlideshow } from '@/components/ImageSlideshow';
 
 const MOCK_OCR_TEXT_PRESET = "Th1s is a s4mple text with s0me OCR err0rs. OptiScan AI can h3lp fix this! The qu1ck br0wn f0x jump3d 0ver the l4zy d0g. We h0pe y0u enj0y using this t00l.";
+
+const slideshowImagesData = [
+  { src: 'https://placehold.co/320x224.png', alt: 'Abstract tech background', hint: 'abstract technology' },
+  { src: 'https://placehold.co/320x224.png', alt: 'Serene nature landscape', hint: 'nature landscape' },
+  { src: 'https://placehold.co/320x224.png', alt: 'Modern city architecture', hint: 'city architecture' },
+  { src: 'https://placehold.co/320x224.png', alt: 'Delicious gourmet food', hint: 'food delicious' },
+  { src: 'https://placehold.co/320x224.png', alt: 'Dynamic sports action shot', hint: 'sports action' },
+  { src: 'https://placehold.co/320x224.png', alt: 'Professional business meeting', hint: 'business meeting' },
+  { src: 'https://placehold.co/320x224.png', alt: 'Vintage travel poster', hint: 'vintage travel' },
+  { src: 'https://placehold.co/320x224.png', alt: 'Cute animal illustration', hint: 'cute animal' },
+];
+
 
 export default function OptiScanPage() {
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
@@ -142,9 +156,9 @@ export default function OptiScanPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background font-sans">
       <AppHeader />
-      <main className="flex-grow container mx-auto px-4 py-8 space-y-8">
+      <main className="flex-grow container mx-auto px-0 sm:px-4 py-8 space-y-8">
         
-        <Card className="shadow-lg">
+        <Card className="shadow-lg mx-4 sm:mx-0">
           <CardHeader>
             <div className="flex items-center space-x-2">
               <UploadCloud className="h-6 w-6 text-primary" />
@@ -185,7 +199,7 @@ export default function OptiScanPage() {
         </Card>
 
         {isOcrLoading && (
-          <Card className="shadow-lg">
+          <Card className="shadow-lg mx-4 sm:mx-0">
             <CardContent className="p-6 flex flex-col items-center justify-center min-h-[150px]">
               <LoadingSpinner className="h-12 w-12 text-primary mb-4" />
               <p className="text-muted-foreground">Extracting text, please wait...</p>
@@ -194,7 +208,7 @@ export default function OptiScanPage() {
         )}
 
         {rawOcrText && !isOcrLoading && (
-          <Card className="shadow-lg">
+          <Card className="shadow-lg mx-4 sm:mx-0">
             <CardHeader>
               <div className="flex items-center space-x-2">
                 <FileText className="h-6 w-6 text-primary" />
@@ -221,7 +235,7 @@ export default function OptiScanPage() {
         )}
 
         {isAiLoading && !refinedText && (
-           <Card className="shadow-lg">
+           <Card className="shadow-lg mx-4 sm:mx-0">
             <CardContent className="p-6 flex flex-col items-center justify-center min-h-[150px]">
               <LoadingSpinner className="h-12 w-12 text-accent mb-4" />
               <p className="text-muted-foreground">AI is refining your text...</p>
@@ -229,8 +243,10 @@ export default function OptiScanPage() {
           </Card>
         )}
         
+        <ImageSlideshow images={slideshowImagesData} title="Featured Inspirations" />
+
         {refinedText && (
-          <Card className="shadow-lg">
+          <Card className="shadow-lg mx-4 sm:mx-0">
             <CardHeader>
               <div className="flex items-center space-x-2">
                  <Wand2 className="h-6 w-6 text-accent" />
@@ -260,7 +276,7 @@ export default function OptiScanPage() {
           </Card>
         )}
 
-        <Card className="shadow-lg bg-card">
+        <Card className="shadow-lg bg-card mx-4 sm:mx-0">
           <CardHeader>
             <div className="flex items-center space-x-2">
               <Info className="h-6 w-6 text-primary" />
