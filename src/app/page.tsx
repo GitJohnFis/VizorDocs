@@ -16,6 +16,7 @@ import { AppFooter } from '@/components/AppFooter';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { UploadCloud, FileText, Wand2, Download, FileImage, Info } from 'lucide-react';
 import { ImageSlideshow } from '@/components/ImageSlideshow';
+import { FaqSection } from '@/components/FaqSection';
 
 const MOCK_OCR_TEXT_PRESET = "Th1s is a s4mple text with s0me OCR err0rs. OptiScan AI can h3lp fix this! The qu1ck br0wn f0x jump3d 0ver the l4zy d0g. We h0pe y0u enj0y using this t00l.";
 
@@ -294,6 +295,8 @@ export default function OptiScanPage() {
             </p>
           </CardContent>
         </Card>
+
+        <FaqSection />
 
       </main>
       <AppFooter />
